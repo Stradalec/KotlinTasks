@@ -2,29 +2,26 @@ package org.example
 
 
 fun main() {
-    var sum = 0
-    var count = 0
-    var input: String?
+    val secretNumber = (0..10).random()
 
-    do {
-        print("Введите число: ")
-        input = readLine()
+    var guessed = false
+
+    while (!guessed) {
+        print("Введите ваш вариант числа (от 0 до 10): ")
+        val input = readln()
 
         if (input != null) {
-            val number = input.toInt()
-            if (number != 0) {
-                sum += number
-                count++
+            val guess = input.toInt()
+            if (guess < secretNumber) {
+                println("Мало")
+            } else if (guess > secretNumber) {
+                println("Много")
+            } else {
+                println("Угадал!")
+                guessed = true
             }
+        } else {
+            println("Пожалуйста, введите число!")
         }
-    } while (input?.toInt() != 0)
-
-    println("Количество введенных чисел: $count")
-    println("Их сумма: $sum")
-    if (count != 0) {
-        val average = sum.toDouble() / count
-        println("Среднее арифметическое: $average")
-    } else {
-        println("Среднее арифметическое не может быть вычислено, так как не было введено ни одного числа.")
     }
 }
