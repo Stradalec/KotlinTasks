@@ -2,7 +2,7 @@ package org.example
 
 fun main() {
     print("Число простых чисел: ")
-    var numberCount = readln().toInt()  // замените на желаемое количество простых чисел
+    var numberCount = readln().toInt()
     var count = 0
     var number = 2
 
