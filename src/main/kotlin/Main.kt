@@ -1,27 +1,23 @@
 package org.example
 
-
 fun main() {
-    val secretNumber = (0..10).random()
+    print("Число простых чисел: ")
+    var numberCount = readln().toInt()  // замените на желаемое количество простых чисел
+    var count = 0
+    var number = 2
 
-    var guessed = false
-
-    while (!guessed) {
-        print("Введите ваш вариант числа (от 0 до 10): ")
-        val input = readln()
-
-        if (input != null) {
-            val guess = input.toInt()
-            if (guess < secretNumber) {
-                println("Мало")
-            } else if (guess > secretNumber) {
-                println("Много")
-            } else {
-                println("Угадал!")
-                guessed = true
+    while (count < numberCount) {
+        var isSimple = true
+        for (index in 2 until number) {
+            if (number % index == 0) {
+                isSimple = false
+                break
             }
-        } else {
-            println("Пожалуйста, введите число!")
         }
+        if (isSimple) {
+            ++count
+            println("${count}-ое число: $number")
+        }
+        ++number
     }
 }
